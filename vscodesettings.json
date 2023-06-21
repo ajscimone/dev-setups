@@ -1,0 +1,7 @@
+{
+    "workbench.editor.wrapTabs": true,
+    "editor.wordWrap": "on",
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000,
+    "window.zoomLevel": 1
+}

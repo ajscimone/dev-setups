@@ -2,12 +2,31 @@
 
 SCRIPT_FOLDER="$(dirname -- "${BASH_SOURCE[0]}")"
 
-# Install Packages
-brew update; brew upgrade; brew cleanup; brew doctor;
-brew install vim curl
+# Install Apple Developer Tools
+xcode-select --install
 
-# Install git
+# Homebrew requires git and curl, which should now be available from xcode
+if ! command -v brew &> /dev/null; then
+    echo "Homebrew is not installed. Installing Homebrew..."
+    # Install Homebrew
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    if ! command -v brew &> /dev/null; then
+        echo "Homebrew installation failed. Please install Homebrew manually."
+        exit 1
+    fi
+    echo "Homebrew installed successfully!"
+else
+    echo "Homebrew is already installed."
+fi
+brew update; brew upgrade; brew cleanup; brew doctor;
+
+# Install Packages
+brew install vim curl
+brew install --cask rectangle
+
+# Install git from Brew
 brew install git
+export PATH=/usr/local/bin:$PATH
 echo 'Enter your git email address'
 read email
 echo 'Enter your full name (to appear for commits)'
@@ -29,6 +48,7 @@ brew install bat
 
 # Install zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
 cp $SCRIPT_FOLDER/../.zshrc ~/
 
 # VSCode Settings

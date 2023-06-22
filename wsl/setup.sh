@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # WSL Setup
 
 SCRIPT_FOLDER="$(dirname -- "${BASH_SOURCE[0]}")"
@@ -12,7 +14,10 @@ sudo apt install -y build-essential manpages-dev
 sudo apt install -y python-is-python3 python3-pip
 
 # Install git
-sudo apt install -y git 
+command -v git >/dev/null 2>&1 ||
+{ echo >&2 "Git is not installed. Installing...";
+  sudo apt install -y git 
+}
 echo 'Enter your git email address'
 read email
 echo 'Enter your full name (to appear for commits)'

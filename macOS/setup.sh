@@ -65,3 +65,6 @@ npm i -g eslint yarn
 brew install make
 brew install cmake
 brew install llvm
+
+# Setup Go
+brew install go

@@ -2,9 +2,6 @@
 
 SCRIPT_FOLDER="$(dirname -- "${BASH_SOURCE[0]}")"
 
-# Install Apple Developer Tools
-xcode-select --install
-
 # Homebrew requires git and curl, which should now be available from xcode
 if ! command -v brew &> /dev/null; then
     echo "Homebrew is not installed. Installing Homebrew..."

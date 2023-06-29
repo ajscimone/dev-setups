@@ -20,6 +20,7 @@ brew update; brew upgrade; brew cleanup; brew doctor;
 # Install Packages
 brew install vim curl
 brew install --cask rectangle
+brew install --cask visual-studio-code
 
 # Install git from Brew
 brew install git
